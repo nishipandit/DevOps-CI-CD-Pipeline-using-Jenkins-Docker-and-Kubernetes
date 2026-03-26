@@ -15,7 +15,7 @@ pipeline {
         stage('Build Backend Image') {
             steps {
                 script {
-                    docker.build("tpathak21/devops-backend:latest", "./backend")
+                    docker.build("panditraonishi/devops-backend:latest", "./backend")
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         stage('Build Frontend Image') {
             steps {
                 script {
-                    docker.build("tpathak21/devops-frontend:latest", "./frontend")
+                    docker.build("panditraonishi/devops-frontend:latest", "./frontend")
                 }
             }
         }
@@ -42,8 +42,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
-                        docker.image("tpathak21/devops-backend:latest").push()
-                        docker.image("tpathak21/devops-frontend:latest").push()
+                        docker.image("panditraonishi/devops-backend:latest").push()
+                        docker.image("panditraonishi/devops-frontend:latest").push()
                     }
                 }
             }
